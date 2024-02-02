@@ -1,10 +1,8 @@
 import logo from "./assets/logo.png";
+
+
 const CloneFixNavbar = () => (
- <nav
-  className="navbar navbar-expand-lg bg-dark"
-  data-bs-theme="dark"
-  style={{ backgroundColor: "#221f1f" }}
- >
+ <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div className="container-fluid">
    <a className="navbar-brand" href="..">
     <img src={logo} alt="logo" style={{ width: 100, height: 55 }} />
@@ -50,7 +48,7 @@ const CloneFixNavbar = () => (
     </ul>
     <div className="d-flex align-items-center">
      <i className="bi bi-search icons"></i>
-     <div id="kids" className="fw-bold">
+     <div id="kids" className="fw-bold icons">
       KIDS
      </div>
      <i className="bi bi-bell icons"></i>
