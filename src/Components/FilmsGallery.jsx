@@ -1,4 +1,4 @@
-//http://www.omdbapi.com/?apikey=metti-qui-la-api-key&s=Star Wars
+// importo i ''componenti'' necessari
 
 import { Component } from "react";
 import Col from "react-bootstrap/Col";
@@ -12,6 +12,8 @@ class FilmsGallery extends Component {
   loadingError: false,
   errorMessage: "",
  };
+
+ // fetch dei film dall'api (url ricevuta tramite prop in App)
 
  fetchFilms = () => {
   fetch(this.props.url)
@@ -47,11 +49,14 @@ class FilmsGallery extends Component {
   console.log("errore ", this.state.errorMessage);
   return (
    <>
+    {/* Spinner caricamento */}
     {this.state.isLoading ? (
      <Spinner animation="grow" />
-    ) : this.state.loadingError ? (
+    ) : //  Controllo i vari State per generare il render di conseguenza, ci sono dei bug in caso di url particolari come ad esempio troppi spazi nella ricerca
+    this.state.loadingError ? (
      <Alert variant="danger">{this.state.errorMessage.toString()}</Alert>
     ) : (
+     // se tutti gli state di errore sono ''negativi" avvio il map sull'array
      this.state.arrayFilms.map((film) => (
       <Col key={film.imdbID}>
        <img
