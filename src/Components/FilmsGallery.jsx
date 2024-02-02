@@ -60,7 +60,7 @@ class FilmsGallery extends Component {
      this.state.arrayFilms.map((film) => (
       <Col key={film.imdbID}>
        <img
-        className="img-thumbnail h-100"
+        className=" img-thumbnail h-100"
         src={film.Poster}
         alt="immagine film"
        />
