@@ -3,11 +3,14 @@
 import { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
+import Alert from "react-bootstrap/Alert";
 
 class FilmsGallery extends Component {
  state = {
   arrayFilms: [],
   isLoading: true,
+  loadingError: false,
+  errorMessage: "",
  };
 
  fetchFilms = () => {
@@ -16,7 +19,7 @@ class FilmsGallery extends Component {
     if (response.ok) {
      return response.json();
     } else {
-     throw new Error("Errore nel recupero dati");
+     throw new Error("impossibile caricare i dati:", response.status);
     }
    })
    .then((objOfFilms) => {
@@ -30,6 +33,8 @@ class FilmsGallery extends Component {
     console.log(err);
     this.setState({
      isLoading: false,
+     loadingError: true,
+     errorMessage: err,
     });
    });
  };
@@ -39,11 +44,14 @@ class FilmsGallery extends Component {
  }
 
  render() {
+  console.log(this.state.errorMessage);
   console.log(this.state.arrayFilms);
   return (
    <>
     {this.state.isLoading ? (
      <Spinner animation="grow" />
+    ) : this.state.loadingError ? (
+     <Alert variant="danger">{this.state.errorMessage.toString()}</Alert>
     ) : (
      this.state.arrayFilms.map((film) => (
       <Col key={film.imdbID}>
