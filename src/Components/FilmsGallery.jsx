@@ -19,7 +19,7 @@ class FilmsGallery extends Component {
     if (response.ok) {
      return response.json();
     } else {
-     throw new Error("impossibile caricare i dati:", response.status);
+     throw new Error(response.status);
     }
    })
    .then((objOfFilms) => {
@@ -44,8 +44,7 @@ class FilmsGallery extends Component {
  }
 
  render() {
-  console.log(this.state.errorMessage);
-  console.log(this.state.arrayFilms);
+  console.log("errore ", this.state.errorMessage);
   return (
    <>
     {this.state.isLoading ? (
@@ -55,7 +54,11 @@ class FilmsGallery extends Component {
     ) : (
      this.state.arrayFilms.map((film) => (
       <Col key={film.imdbID}>
-       <img className="img-thumbnail" src={film.Poster} alt="immagine film" />
+       <img
+        className="img-thumbnail h-100"
+        src={film.Poster}
+        alt="immagine film"
+       />
       </Col>
      ))
     )}

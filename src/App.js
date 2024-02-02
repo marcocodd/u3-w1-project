@@ -21,7 +21,9 @@ function App() {
     <main>
      <h4>Trending Now</h4>
      <Row className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 g-3 mb-4">
-      <FilmsGallery url="http://www.omdbapi.com/?apikey=59396482s=Comedy" />
+      {/* immessa un'url errata per prova alert ho aggiunto un 1 subito dopo .com/ */}
+
+      <FilmsGallery url="http://www.omdbapi.com/1?apikey=59396482&s=Ciao" />
      </Row>
      <h4>Watch it Again</h4>
      <Row className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 g-3 mb-4">
